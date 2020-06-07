@@ -17,16 +17,16 @@ class SignIn extends Component {
     };
   }
 
-  handleSubmit = async e   => {
+  handleSubmit = async (e) => {
     e.preventDefault();
 
     const { email, password } = this.state;
 
     try {
-      await auth.signInWithEmailAndPassword(email, password)
+      await auth.signInWithEmailAndPassword(email, password);
       this.setState({ email: "", password: "" });
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
   };
 
@@ -60,10 +60,10 @@ class SignIn extends Component {
             required
           />
           <div className="buttons">
-          <CustomButton type="submit">Sign In</CustomButton>
-          <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
-            Sign In With Google
-          </CustomButton>
+            <CustomButton type="submit">Sign In</CustomButton>
+            <CustomButton type="button" onClick={signInWithGoogle} isGoogleSignIn>
+              Sign In With Google
+            </CustomButton>
           </div>
         </form>
       </div>
