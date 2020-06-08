@@ -6,11 +6,20 @@ import rootReducer from "./root-reducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 
-const middlewares = [logger];
+const middlewares = [];
+
+if (process.env.NODE_ENV === 'development') {
+  middlewares.push(logger);
+}
+
+// export const store = createStore(
+//   rootReducer,
+//   composeEnhancers(applyMiddleware(...middlewares))
+// );
 
 export const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(...middlewares))
+  applyMiddleware(...middlewares)
 );
 
 export const persistor = persistStore(store);
