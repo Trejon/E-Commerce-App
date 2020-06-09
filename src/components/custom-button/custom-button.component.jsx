@@ -22,8 +22,6 @@ const CustomButton = ({
 
 export default CustomButton;
 
-
-
 // import React from 'react';
 
 // import { CustomButtonContainer } from './custom-button.styles';
