@@ -20,12 +20,6 @@ const App = ({ checkUserSession, currentUser }) => {
     checkUserSession();
   }, [checkUserSession]);
 
-  // unsubscribeFromAuth = null;
-
-  // componentWillUnmount() {
-  //   unsubscribeFromAuth();
-  // }
-
   return (
     <div>
       <Header />
