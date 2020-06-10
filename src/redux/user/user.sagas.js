@@ -5,8 +5,8 @@ import UserActionTypes from "./user.types";
 import {
   signInSuccess,
   signInFailure,
-  signOutFailure,
   signOutSuccess,
+  signOutFailure,
   signUpSuccess,
   signUpFailure,
 } from "./user.actions";
@@ -46,7 +46,7 @@ export function* signInWithEmail({ payload: { email, password } }) {
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
     yield getSnapshotFromUserAuth(user);
   } catch (error) {
-    put(signInFailure(error));
+    yield put(signInFailure(error));
   }
 }
 
@@ -73,7 +73,6 @@ export function* signUp({ payload: { email, password, displayName } }) {
   try {
     const { user } = yield auth.createUserWithEmailAndPassword(email, password);
     yield put(signUpSuccess({ user, additionalData: { displayName } }));
-    yield getSnapshotFromUserAuth(user, displayName);
   } catch (error) {
     yield put(signUpFailure(error));
   }
